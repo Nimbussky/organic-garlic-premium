@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Organic Garlic Premium
+
+India's most premium organic grocery e-commerce platform.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **3D:** Three.js + React Three Fiber + Drei
+- **Animations:** Framer Motion
+- **Database:** Supabase (PostgreSQL)
+- **Payments:** Razorpay (UPI)
+- **Deployment:** Vercel / Cloudflare Pages
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Set up environment
+cp .env.example .env.local
+# Fill in your Supabase and Razorpay keys
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Database Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Run `supabase-schema.sql` in the SQL Editor
+3. Copy your project URL and keys to `.env.local`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key |
+| `NEXT_PUBLIC_RAZORPAY_KEY_ID` | Razorpay test/live key |
+| `RAZORPAY_KEY_SECRET` | Razorpay secret |
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/       # React components
+│   ├── ui/           # Reusable UI components
+│   ├── three/        # Three.js 3D components
+│   ├── layout/       # Header, Footer
+│   ├── home/         # Homepage sections
+│   ├── product/      # Product pages
+│   ├── cart/         # Cart drawer + page
+│   ├── checkout/     # Checkout flow
+│   └── admin/        # Admin dashboard
+├── lib/              # Utilities, constants, data
+├── store/            # Cart state management
+└── types/            # TypeScript types
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- [x] 3D hero with floating garlic
+- [x] Product catalog with filtering
+- [x] Product detail pages
+- [x] Shopping cart (context/reducer)
+- [x] Checkout with Razorpay UPI
+- [x] Admin dashboard
+- [x] Mobile responsive
+- [x] SEO (sitemap, robots, structured data)
+- [x] Supabase API routes
+- [ ] Authentication (Clerk/Auth.js)
+- [ ] Image optimization (product photos)
+- [ ] Email notifications
+- [ ] Analytics (GA4, GTM)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private - Organic Garlic Premium

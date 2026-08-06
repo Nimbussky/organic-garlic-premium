@@ -36,6 +36,11 @@ export const products: Product[] = [
     inStock: true,
     weight: "250g",
     origin: "Himachal Pradesh, India",
+    seo: {
+      title: "Fresh Peeled Garlic | Ready-to-Use Organic Cloves",
+      description:
+        "Save time with ready-to-use organic peeled garlic cloves. Perfect for quick, flavorful cooking every time.",
+    },
   },
   {
     id: "gp-002",
@@ -71,6 +76,11 @@ export const products: Product[] = [
     inStock: true,
     weight: "500g",
     origin: "Himachal Pradesh, India",
+    seo: {
+      title: "Whole Organic Garlic Bulbs | Fresh & Flavorful",
+      description:
+        "Discover premium whole organic garlic bulbs for rich, aromatic flavor in every dish. A kitchen essential.",
+    },
   },
   {
     id: "gp-003",
@@ -106,6 +116,11 @@ export const products: Product[] = [
     inStock: true,
     weight: "100g",
     origin: "Himachal Pradesh, India",
+    seo: {
+      title: "Fermented Black Garlic | Rich, Umami Flavor",
+      description:
+        "Experience the deep, sweet umami of fermented black garlic. A gourmet ingredient for health-conscious foodies.",
+    },
   },
   {
     id: "gp-004",
@@ -140,6 +155,11 @@ export const products: Product[] = [
     inStock: true,
     weight: "100g",
     origin: "Himachal Pradesh, India",
+    seo: {
+      title: "Premium Garlic Powder | Long-Lasting Flavor Boost",
+      description:
+        "Elevate dishes with long-lasting garlic powder. Pure, organic, and ready to sprinkle.",
+    },
   },
   {
     id: "gp-005",
@@ -174,6 +194,11 @@ export const products: Product[] = [
     inStock: true,
     weight: "250ml",
     origin: "Himachal Pradesh, India",
+    seo: {
+      title: "Garlic Infused Olive Oil | Gourmet Flavor in Minutes",
+      description:
+        "Infuse your dishes with aromatic garlic olive oil. Ready-to-use, organic, and packed with flavor.",
+    },
   },
   {
     id: "gp-006",
@@ -208,6 +233,11 @@ export const products: Product[] = [
     inStock: true,
     weight: "200g",
     origin: "Himachal Pradesh, India",
+    seo: {
+      title: "Organic Garlic Chutney | Spicy & Flavorful Spread",
+      description:
+        "Spice up your meals with organic garlic chutney. A tangy, versatile condiment for any dish.",
+    },
   },
 ]
 

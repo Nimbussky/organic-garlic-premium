@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { useCart } from "@/store/cart"
-import { Button } from "@/components/ui"
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants"
 import { useState } from "react"
 

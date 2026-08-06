@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useMemo } from "react"
+import { useRef, useMemo, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Float, Environment, ContactShadows, MeshTransmissionMaterial } from "@react-three/drei"
 import type { Mesh } from "three"
@@ -41,7 +41,7 @@ function GarlicModel() {
 
 function Particles() {
   const count = 80
-  const positions = useMemo(() => {
+  const [positions] = useState(() => {
     const pos = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
       pos[i * 3] = (Math.random() - 0.5) * 12
@@ -49,7 +49,7 @@ function Particles() {
       pos[i * 3 + 2] = (Math.random() - 0.5) * 6
     }
     return pos
-  }, [])
+  })
 
   return (
     <points>

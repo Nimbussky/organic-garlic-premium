@@ -3,7 +3,7 @@
 import { useCart } from "@/store/cart"
 import { formatPrice } from "@/lib/utils"
 import Link from "next/link"
-import Image from "next/image"
+import { ProductImage } from "@/components/ui"
 import { SITE_CONFIG } from "@/lib/constants"
 
 export function CartDrawer() {
@@ -55,8 +55,13 @@ export function CartDrawer() {
                   key={item.product.id}
                   className="flex gap-4 p-4 bg-white rounded-2xl"
                 >
-                  <div className="w-20 h-20 bg-[#F5F0E8] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl">🧄</span>
+                  <div className="w-20 h-20 flex-shrink-0">
+                    <ProductImage
+                      src={item.product.images[0]}
+                      alt={item.product.name}
+                      className="w-full h-full rounded-xl overflow-hidden"
+                      emoji="🧄"
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-sm font-medium text-[#1A1A2E] truncate">

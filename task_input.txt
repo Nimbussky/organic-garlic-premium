@@ -1,0 +1,12 @@
+Task: RUTHLESS Quality Assurance and Architecture Review
+Project: Next.js 16 App Router E-commerce (Organic Garlic Premium)
+
+Agents, act as Senior Principal Engineers. You have been assigned to ruthlessly review this Next.js project. We need to find architectural flaws, security vulnerabilities, anti-patterns, and performance bottlenecks.
+
+We are specifically looking at:
+1. Supabase integration (Are we leaking keys? Is Row Level Security (RLS) properly implied?)
+2. Razorpay integration (Are we validating signatures correctly in API routes?)
+3. Next.js App Router best practices (Are we overusing client components where server components would be better? Are we fetching data securely?)
+4. Tailwind and UI structure.
+
+Since you cannot browse the entire repo, focus on the general patterns standard in such an app, and explicitly list the top 5 most critical areas we need to manually audit. Be brutal. We want MNC-level quality.

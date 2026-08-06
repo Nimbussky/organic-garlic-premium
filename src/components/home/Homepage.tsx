@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { useCart } from "@/store/cart"
 import { formatPrice } from "@/lib/utils"
-import { Badge, Button, ProductCard } from "@/components/ui"
-import { products, getProductReviews } from "@/lib/data"
+import { Badge, Button, ProductCard, ProductImage } from "@/components/ui"
+import { products } from "@/lib/data"
 import type { Product } from "@/types"
 import { useState } from "react"
 
@@ -100,10 +100,13 @@ function FeaturedProducts({ onAdd }: { onAdd: (product: Product) => void }) {
           {products.slice(0, 6).map((product) => (
             <ProductCard key={product.id}>
               <Link href={`/products/${product.slug}`}>
-                <div className="aspect-square bg-[#F5F0E8] flex items-center justify-center overflow-hidden">
-                  <span className="text-8xl opacity-50 group-hover:scale-110 transition-transform duration-700">
-                    🧄
-                  </span>
+                <div className="aspect-square bg-[#F5F0E8] overflow-hidden">
+                  <ProductImage
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="w-full h-full"
+                    imgClassName="transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
               </Link>
               <div className="p-6">

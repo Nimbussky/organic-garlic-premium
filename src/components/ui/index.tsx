@@ -1,7 +1,8 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { type ButtonHTMLAttributes, type AnchorHTMLAttributes } from "react"
+import Image from "next/image"
+import { useState, type ButtonHTMLAttributes } from "react"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost"
@@ -130,6 +131,48 @@ export function SectionHeading({
           {subtitle}
         </p>
       )}
+    </div>
+  )
+}
+
+interface ProductImageProps {
+  src?: string
+  alt: string
+  className?: string
+  imgClassName?: string
+  emoji?: string
+  priority?: boolean
+}
+
+export function ProductImage({
+  src,
+  alt,
+  className,
+  imgClassName,
+  emoji = "🧄",
+  priority,
+}: ProductImageProps) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed || !src) {
+    return (
+      <div className={cn("flex items-center justify-center", className)}>
+        <span className="text-8xl opacity-40 select-none">{emoji}</span>
+      </div>
+    )
+  }
+
+  return (
+    <div className={cn("relative", className)}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className={cn("object-cover", imgClassName)}
+        onError={() => setFailed(true)}
+      />
     </div>
   )
 }

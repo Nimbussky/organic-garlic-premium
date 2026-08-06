@@ -3,7 +3,7 @@
 import { useCart } from "@/store/cart"
 import { formatPrice } from "@/lib/utils"
 import Link from "next/link"
-import { Button } from "@/components/ui"
+import { Button, ProductImage } from "@/components/ui"
 import { SITE_CONFIG } from "@/lib/constants"
 
 export function CartPageContent() {
@@ -36,8 +36,13 @@ export function CartPageContent() {
                   key={item.product.id}
                   className="flex gap-6 bg-white p-6 rounded-3xl border border-[#E8E4DC]"
                 >
-                  <div className="w-24 h-24 bg-[#F5F0E8] rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-4xl opacity-50">🧄</span>
+                  <div className="w-24 h-24 flex-shrink-0">
+                    <ProductImage
+                      src={item.product.images[0]}
+                      alt={item.product.name}
+                      className="w-full h-full rounded-2xl overflow-hidden"
+                      emoji="🧄"
+                    />
                   </div>
                   <div className="flex-1">
                     <Link href={`/products/${item.product.slug}`}>

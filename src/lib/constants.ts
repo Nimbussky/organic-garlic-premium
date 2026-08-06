@@ -37,6 +37,7 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { label: "Shop", href: "/products" },
   { label: "Our Story", href: "/story" },
+  { label: "About", href: "/about" },
   { label: "Recipes", href: "/recipes" },
   { label: "Contact", href: "/contact" },
 ] as const

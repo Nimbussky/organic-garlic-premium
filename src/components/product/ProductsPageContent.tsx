@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button, ProductCard, Badge } from "@/components/ui"
+import { Button, ProductCard, Badge, ProductImage } from "@/components/ui"
 import { products } from "@/lib/data"
 import { formatPrice } from "@/lib/utils"
 import { useCart } from "@/store/cart"
@@ -10,12 +10,20 @@ import { useCart } from "@/store/cart"
 export function ProductsPageContent() {
   const { addItem } = useCart()
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
+  const [searchQuery, setSearchQuery] = useState("")
 
   const categories = ["All", ...new Set(products.map((p) => p.category))]
-  const filtered =
-    selectedCategory === "All"
-      ? products
-      : products.filter((p) => p.category === selectedCategory)
+  const query = searchQuery.trim().toLowerCase()
+  const filtered = products.filter((p) => {
+    const matchesCategory =
+      selectedCategory === "All" || p.category === selectedCategory
+    const matchesSearch =
+      query === "" ||
+      p.name.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query) ||
+      p.tags.some((t) => t.toLowerCase().includes(query))
+    return matchesCategory && matchesSearch
+  })
 
   return (
     <div className="pt-24 min-h-screen bg-[#FAFAF6]">
@@ -29,7 +37,7 @@ export function ProductsPageContent() {
           </h1>
         </div>
 
-        <div className="flex flex-wrap gap-3 mb-12">
+        <div className="flex flex-wrap gap-3 mb-6">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -45,14 +53,55 @@ export function ProductsPageContent() {
           ))}
         </div>
 
+        <div className="mb-10">
+          <div className="relative max-w-md">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9A9AAE]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </span>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search garlic, powder, chutney..."
+              className="w-full pl-12 pr-4 py-3 bg-white rounded-full border border-[#E8E4DC] text-[#1A1A2E] placeholder-[#9A9AAE] focus:outline-none focus:border-[#C9A84C] transition-colors"
+            />
+          </div>
+        </div>
+
+        <p className="text-sm text-[#9A9AAE] mb-6">
+          {filtered.length} {filtered.length === 1 ? "product" : "products"}
+        </p>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-[#5A5A6E]">
+            No products match your search. Try a different keyword.
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((product) => (
             <ProductCard key={product.id}>
               <Link href={`/products/${product.slug}`}>
-                <div className="aspect-square bg-[#F5F0E8] flex items-center justify-center overflow-hidden">
-                  <span className="text-8xl opacity-40 group-hover:scale-110 transition-transform duration-700">
-                    🧄
-                  </span>
+                <div className="aspect-square bg-[#F5F0E8] overflow-hidden">
+                  <ProductImage
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="w-full h-full"
+                    imgClassName="transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
               </Link>
               <div className="p-6">

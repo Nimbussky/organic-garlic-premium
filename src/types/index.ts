@@ -15,6 +15,10 @@ export interface Product {
   inStock: boolean
   weight: string
   origin: string
+  seo?: {
+    title: string
+    description: string
+  }
 }
 
 export interface NutritionInfo {
