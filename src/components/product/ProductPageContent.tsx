@@ -15,7 +15,7 @@ export function ProductPageContent({ slug }: { slug: string }) {
   const { addItem } = useCart()
   const [quantity, setQuantity] = useState(1)
   const [selectedImage, setSelectedImage] = useState(0)
-  const [reviews, setReviews] = useState<Review[]>(() => getProductReviews(product.id))
+  const [reviews, setReviews] = useState<Review[]>(() => product ? getProductReviews(product.id) : [])
   const [reviewForm, setReviewForm] = useState({ name: "", rating: 5, comment: "" })
   const [reviewStatus, setReviewStatus] = useState<"" | "submitting" | "success" | "error">("")
 
