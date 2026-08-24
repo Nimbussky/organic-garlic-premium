@@ -1,5 +1,3 @@
-sb_publishable_JMB1rpci4lbPIV_rw_eSlA_YWjZX-NI 
-
--sb_secret_5-CSjBUlQabijgfGKd2a6w_GS_x9Q2h
-
-https://tuussookfvuwtfxwysxp.supabase.co/rest/v1/
+# REMOVED - DO NOT COMMIT REAL KEYS
+# Rotate your Supabase keys immediately in the Supabase dashboard.
+# Use environment variables only (.env.local / Vercel env).
