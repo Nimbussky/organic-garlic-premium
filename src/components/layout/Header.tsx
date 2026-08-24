@@ -3,14 +3,27 @@
 import Link from "next/link"
 import { useCart } from "@/store/cart"
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function Header() {
   const { totalItems, toggleCart } = useCart()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#1A1A2E]/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-20">
           <Link
@@ -25,7 +38,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/60 hover:text-white/90 transition-colors tracking-wide"
+                className="text-sm text-white/70 hover:text-white transition-colors tracking-wide"
               >
                 {link.label}
               </Link>
@@ -36,6 +49,7 @@ export function Header() {
             <button
               onClick={toggleCart}
               className="relative text-white/80 hover:text-white transition-colors"
+              aria-label="Open cart"
             >
               <svg
                 width="20"
@@ -57,6 +71,7 @@ export function Header() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-white/80 hover:text-white transition-colors"
+              aria-label="Toggle menu"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 {isMenuOpen ? (
@@ -71,13 +86,13 @@ export function Header() {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-[#FAFAF6] border-t border-[#E8E4DC]">
+        <div className="md:hidden bg-[#1A1A2E] border-t border-white/10">
           <div className="px-4 py-6 space-y-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-[#1A1A2E] text-lg"
+                className="block text-white/90 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
