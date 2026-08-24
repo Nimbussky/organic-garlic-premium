@@ -1,12 +1,18 @@
 "use client"
 
 import Link from "next/link"
+import dynamic from "next/dynamic"
 import { useCart } from "@/store/cart"
 import { formatPrice } from "@/lib/utils"
 import { Badge, Button, ProductCard, ProductImage } from "@/components/ui"
 import { products } from "@/lib/data"
 import type { Product } from "@/types"
 import { useState } from "react"
+
+const Hero3D = dynamic(
+  () => import("@/components/three/GarlicHero").then((m) => m.Hero3D),
+  { ssr: false, loading: () => null }
+)
 
 export function Homepage() {
   const { addItem } = useCart()
@@ -29,13 +35,17 @@ export function Homepage() {
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1A2E]">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E]/80 via-[#1A1A2E]/50 to-[#1A1A2E]/90 z-10" />
+      {/* 3D background */}
+      <div className="absolute inset-0 z-0 opacity-60">
+        <Hero3D />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E]/70 via-[#1A1A2E]/40 to-[#1A1A2E]/90 z-10" />
       <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
         <p className="text-[#C9A84C] text-sm tracking-[0.3em] uppercase mb-6">
           Premium Organic Since 2024
         </p>
         <h1 className="text-5xl md:text-8xl font-light text-white tracking-tight leading-none mb-6">
-          Nature&apos;s
+          Nature's
           <br />
           <span className="italic text-[#C9A84C]">Finest</span> Garlic
         </h1>
@@ -43,7 +53,7 @@ function HeroSection() {
           Hand-selected, organically grown, and delivered fresh from the pristine
           valleys of Himachal Pradesh to your doorstep.
         </p>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 flex-wrap">
           <Link
             href="/products"
             className="px-8 py-4 bg-[#C9A84C] text-[#1A1A2E] rounded-2xl font-medium hover:bg-[#D4B85A] transition-all hover:scale-[1.02]"
@@ -57,7 +67,7 @@ function HeroSection() {
             Our Story
           </Link>
         </div>
-        <div className="mt-16 flex items-center justify-center gap-12 text-white/40 text-sm">
+        <div className="mt-16 flex items-center justify-center gap-8 md:gap-12 text-white/40 text-sm">
           <div className="text-center">
             <p className="text-2xl text-white font-light">100%</p>
             <p>Organic</p>
@@ -422,6 +432,30 @@ function FAQSection() {
 }
 
 function NewsletterSection() {
+  const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<"" | "loading" | "success" | "error">("")
+
+  const handleSubscribe = async () => {
+    if (!email.trim()) return
+    setStatus("loading")
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+      if (res.ok) {
+        setStatus("success")
+        setEmail("")
+      } else {
+        setStatus("error")
+      }
+    } catch {
+      setStatus("error")
+    }
+    setTimeout(() => setStatus(""), 3000)
+  }
+
   return (
     <section className="py-28 px-4 bg-[#1A1A2E]">
       <div className="max-w-2xl mx-auto text-center">
@@ -437,13 +471,25 @@ function NewsletterSection() {
         <div className="flex items-center gap-3 max-w-md mx-auto">
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/30 focus:outline-none focus:border-[#C9A84C] transition-colors"
           />
-          <button className="px-6 py-4 bg-[#C9A84C] text-[#1A1A2E] rounded-2xl font-medium hover:bg-[#D4B85A] transition-colors whitespace-nowrap">
-            Subscribe
+          <button
+            onClick={handleSubscribe}
+            disabled={status === "loading"}
+            className="px-6 py-4 bg-[#C9A84C] text-[#1A1A2E] rounded-2xl font-medium hover:bg-[#D4B85A] transition-colors whitespace-nowrap disabled:opacity-60"
+          >
+            {status === "loading" ? "..." : "Subscribe"}
           </button>
         </div>
+        {status === "success" && (
+          <p className="mt-4 text-sm text-[#6B8E5A]">Thanks for subscribing!</p>
+        )}
+        {status === "error" && (
+          <p className="mt-4 text-sm text-red-400">Something went wrong. Please try again.</p>
+        )}
       </div>
     </section>
   )
