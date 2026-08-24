@@ -10,11 +10,7 @@ export const products: Product[] = [
     price: 349,
     comparePrice: 449,
     unit: "250g pack",
-    images: [
-      "/images/garlic-1.jpg",
-      "/images/garlic-2.jpg",
-      "/images/garlic-3.jpg",
-    ],
+    images: ["/images/garlic-1.jpg"],
     category: "Garlic",
     tags: ["organic", "premium", "peeled", "fresh"],
     nutrition: {
@@ -51,10 +47,7 @@ export const products: Product[] = [
     price: 199,
     comparePrice: 249,
     unit: "500g pack",
-    images: [
-      "/images/garlic-whole-1.jpg",
-      "/images/garlic-whole-2.jpg",
-    ],
+    images: ["/images/garlic-whole-1.jpg"],
     category: "Garlic",
     tags: ["organic", "whole", "bulbs", "fresh"],
     nutrition: {
@@ -91,10 +84,7 @@ export const products: Product[] = [
     price: 599,
     comparePrice: 749,
     unit: "100g pack",
-    images: [
-      "/images/black-garlic-1.jpg",
-      "/images/black-garlic-2.jpg",
-    ],
+    images: ["/images/black-garlic-1.jpg"],
     category: "Specialty",
     tags: ["fermented", "black garlic", "aged", "gourmet"],
     nutrition: {
@@ -130,10 +120,7 @@ export const products: Product[] = [
       "Finely ground powder from sun-dried organic garlic cloves. Perfect for seasoning, rubs, and cooking. No additives or preservatives.",
     price: 249,
     unit: "100g jar",
-    images: [
-      "/images/garlic-powder-1.jpg",
-      "/images/garlic-powder-2.jpg",
-    ],
+    images: ["/images/garlic-powder-1.jpg"],
     category: "Spices",
     tags: ["powder", "dried", "seasoning", "organic"],
     nutrition: {
@@ -169,10 +156,7 @@ export const products: Product[] = [
       "Cold-pressed extra virgin olive oil gently infused with organic garlic. Perfect for dressings, dipping, and finishing dishes.",
     price: 449,
     unit: "250ml bottle",
-    images: [
-      "/images/garlic-oil-1.jpg",
-      "/images/garlic-oil-2.jpg",
-    ],
+    images: ["/images/garlic-oil-1.jpg"],
     category: "Oils",
     tags: ["infused", "olive oil", "dressing", "gourmet"],
     nutrition: {
@@ -208,10 +192,7 @@ export const products: Product[] = [
       "Traditional Indian garlic chutney made with organic ingredients. Spicy, tangy, and packed with flavor. No artificial preservatives.",
     price: 179,
     unit: "200g jar",
-    images: [
-      "/images/garlic-chutney-1.jpg",
-      "/images/garlic-chutney-2.jpg",
-    ],
+    images: ["/images/garlic-chutney-1.jpg"],
     category: "Condiments",
     tags: ["chutney", "spread", "traditional", "organic"],
     nutrition: {
