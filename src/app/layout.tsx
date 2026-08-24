@@ -7,6 +7,7 @@ import { SmoothScrolling } from "@/components/ui/SmoothScrolling"
 import "./globals.css"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://organicgarlicpremium.com"),
   title: {
     default: "Organic Garlic Premium | Nature's Finest, Delivered to Your Door",
     template: "%s | Organic Garlic Premium",
