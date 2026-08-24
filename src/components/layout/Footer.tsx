@@ -27,8 +27,6 @@ export function Footer() {
                 { name: "Shop", path: "/products" },
                 { name: "Our Story", path: "/story" },
                 { name: "About", path: "/about" },
-                { name: "Recipes", path: "/recipes" },
-                { name: "Contact", path: "/contact" }
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -47,7 +45,11 @@ export function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-sm">
-              <li>{SITE_CONFIG.email}</li>
+              <li>
+                <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-white transition-colors">
+                  {SITE_CONFIG.email}
+                </a>
+              </li>
               <li>{SITE_CONFIG.phone}</li>
               <li>{SITE_CONFIG.address}</li>
             </ul>
