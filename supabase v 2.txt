@@ -1,1 +1,2 @@
-https://tuussookfvuwtfxwysxp.supabase.co/rest/v1/
+# REMOVED - DO NOT COMMIT REAL KEYS OR PROJECT URLs
+# Use environment variables only.
