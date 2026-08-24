@@ -20,11 +20,11 @@ export const SITE_CONFIG = {
   name: "Organic Garlic Premium",
   tagline: "Nature's Finest, Delivered to Your Door",
   description: "India's most premium organic grocery experience",
-  email: "hello@有机garlicpremium.com",
+  email: "hello@organicgarlicpremium.com",
   phone: "+91 98765 43210",
   address: "Organic Valley, Himachal Pradesh, India",
   social: {
-    instagram: "@有机garlicpremium",
+    instagram: "@organicgarlicpremium",
     twitter: "@garlicpremium",
   },
   shipping: {
@@ -38,6 +38,4 @@ export const NAV_LINKS = [
   { label: "Shop", href: "/products" },
   { label: "Our Story", href: "/story" },
   { label: "About", href: "/about" },
-  { label: "Recipes", href: "/recipes" },
-  { label: "Contact", href: "/contact" },
 ] as const
