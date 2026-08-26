@@ -7,6 +7,11 @@
   --neutral: #1A1A2E;
   --surface: #FAFAF6;
   --background: #F8F6F0;
+  --text-secondary: #5A5A6E;
+  --text-muted: #9A9AAE;
+  --border: #E8E4DC;
+  --gold: #C9A84C;
+  --gold-soft: #D4B85A;
 }
 
 * {
@@ -15,13 +20,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
   background-color: var(--background);
   color: var(--neutral);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.011em;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
 }
 
 ::selection {
@@ -31,29 +44,51 @@ body {
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 7s ease-in-out infinite;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.6s ease-out forwards;
+  animation: slideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.premium-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -12px rgba(26, 26, 46, 0.12);
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  z-index: 1;
 }
 
 input, textarea, select {
@@ -62,6 +97,11 @@ input, textarea, select {
 
 input::placeholder, textarea::placeholder {
   color: #9A9AAE;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
