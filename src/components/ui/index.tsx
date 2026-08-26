@@ -21,15 +21,15 @@ export function Button({
         "relative inline-flex items-center justify-center font-medium transition-all duration-300 cursor-pointer",
         "hover:scale-[1.02] active:scale-[0.98]",
         "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-        size === "sm" && "px-4 py-2 text-sm rounded-lg",
-        size === "md" && "px-6 py-3 text-base rounded-xl",
-        size === "lg" && "px-8 py-4 text-lg rounded-2xl",
+        size === "sm" && "px-4 py-2 text-xs tracking-wide rounded-full",
+        size === "md" && "px-6 py-3 text-sm tracking-wide rounded-full",
+        size === "lg" && "px-8 py-4 text-base tracking-wide rounded-full",
         variant === "primary" &&
-          "bg-[#1A1A2E] text-[#FAFAF6] hover:bg-[#2A2A3E] shadow-lg shadow-black/10",
+          "bg-[#1A1A2E] text-[#FAFAF6] hover:bg-[#2A2A3E] shadow-md shadow-black/8",
         variant === "secondary" &&
-          "bg-[#C9A84C] text-[#1A1A2E] hover:bg-[#D4B85A] shadow-lg shadow-[#C9A84C]/20",
+          "bg-[#C9A84C] text-[#1A1A2E] hover:bg-[#D4B85A] shadow-md shadow-[#C9A84C]/15",
         variant === "outline" &&
-          "border-2 border-[#E8E4DC] text-[#1A1A2E] hover:border-[#C9A84C] hover:text-[#C9A84C]",
+          "border border-[#E8E4DC] text-[#1A1A2E] hover:border-[#C9A84C] hover:text-[#C9A84C]",
         variant === "ghost" && "text-[#5A5A6E] hover:text-[#1A1A2E] hover:bg-[#F5F0E8]/50",
         className
       )}
@@ -47,9 +47,10 @@ export function ProductCard({ children, className }: ProductCardProps) {
   return (
     <div
       className={cn(
-        "group relative bg-[#FAFAF6] rounded-3xl overflow-hidden",
-        "transition-all duration-500 hover:shadow-2xl hover:shadow-black/5",
-        "border border-[#E8E4DC] hover:border-[#C9A84C]/30",
+        "group relative bg-white rounded-2xl overflow-hidden",
+        "transition-all duration-500 ease-out",
+        "border border-[#E8E4DC] hover:border-[#C9A84C]/35",
+        "hover:shadow-[0_24px_48px_-12px_rgba(26,26,46,0.1)]",
         className
       )}
     >
