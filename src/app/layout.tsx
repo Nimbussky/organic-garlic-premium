@@ -1,10 +1,25 @@
 import type { Metadata } from "next"
+import { Cormorant_Garamond, DM_Sans } from "next/font/google"
 import { CartProvider } from "@/store/cart"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { CartDrawer } from "@/components/cart/CartDrawer"
 import { SmoothScrolling } from "@/components/ui/SmoothScrolling"
 import "./globals.css"
+
+const display = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-display",
+  display: "swap",
+})
+
+const sans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://organicgarlicpremium.com"),
@@ -69,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -97,7 +112,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-[#F8F6F0]">
+      <body className="min-h-screen bg-[#F8F6F0] font-sans">
         <SmoothScrolling>
           <CartProvider>
             <Header />
