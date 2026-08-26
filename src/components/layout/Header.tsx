@@ -28,7 +28,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link
             href="/"
-            className="text-lg font-medium tracking-wider text-white/90 hover:text-white transition-colors"
+            className="font-display text-xl tracking-wide text-white/95 hover:text-white transition-colors"
           >
             {SITE_CONFIG.name}
           </Link>
